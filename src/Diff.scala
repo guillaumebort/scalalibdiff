@@ -69,8 +69,8 @@ object Diff {
   def text(original: String,
            modified: String,
            colored: Boolean = false): String = {
-    val originalLines = original.lines.toIndexedSeq
-    val modifiedLines = modified.lines.toIndexedSeq
+    val originalLines = original.linesIterator.toSeq
+    val modifiedLines = modified.linesIterator.toSeq
     val buff = new StringBuilder
     Diff(originalLines, modifiedLines).foreach {
       case Diff.Same(start, end, _, _) =>
