@@ -25,7 +25,7 @@ trait ScalalibdiffTestModule extends TestModule with ScalaModule {
   def testFrameworks = Seq("utest.runner.Framework")
 }
 
-object jvm extends Cross[ScalalibdiffJvmModule]("2.11.12", "2.12.7", "2.13.12")
+object jvm extends Cross[ScalalibdiffJvmModule]("2.11.12", "2.12.7", "2.13.2")
 class ScalalibdiffJvmModule(val crossScalaVersion: String) extends ScalalibdiffModule {
   def platformSegment = "jvm"
   object test extends Tests with ScalalibdiffTestModule {
@@ -33,10 +33,10 @@ class ScalalibdiffJvmModule(val crossScalaVersion: String) extends ScalalibdiffM
   }
 }
 
-object js extends Cross[ScalalibdiffJsModule]("2.11.12", "2.12.7", "2.13.12")
+object js extends Cross[ScalalibdiffJsModule]("2.11.12", "2.12.7", "2.13.2")
 class ScalalibdiffJsModule(val crossScalaVersion: String) extends ScalalibdiffModule with ScalaJSModule {
   def platformSegment = "js"
-  def scalaJSVersion = "0.6.25"
+  def scalaJSVersion = "0.6.33"
   object test extends Tests with ScalalibdiffTestModule {
     def millSourcePath = build.millSourcePath / "test"
   }
