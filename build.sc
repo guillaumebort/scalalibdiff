@@ -21,11 +21,11 @@ trait ScalalibdiffModule extends CrossScalaModule with ScalafmtModule with Publi
 }
 
 trait ScalalibdiffTestModule extends TestModule with ScalaModule {
-  def ivyDeps = Agg(ivy"com.lihaoyi::utest::0.6.6")
+  def ivyDeps = Agg(ivy"com.lihaoyi::utest::0.8.2")
   def testFrameworks = Seq("utest.runner.Framework")
 }
 
-object jvm extends Cross[ScalalibdiffJvmModule]("2.11.12", "2.12.7")
+object jvm extends Cross[ScalalibdiffJvmModule]("2.11.12", "2.12.7", "2.13.12")
 class ScalalibdiffJvmModule(val crossScalaVersion: String) extends ScalalibdiffModule {
   def platformSegment = "jvm"
   object test extends Tests with ScalalibdiffTestModule {
@@ -33,10 +33,10 @@ class ScalalibdiffJvmModule(val crossScalaVersion: String) extends ScalalibdiffM
   }
 }
 
-object js extends Cross[ScalalibdiffJsModule]("2.11.12", "2.12.7")
+object js extends Cross[ScalalibdiffJsModule]("2.11.12", "2.12.7", "2.13.12")
 class ScalalibdiffJsModule(val crossScalaVersion: String) extends ScalalibdiffModule with ScalaJSModule {
   def platformSegment = "js"
-  def scalaJSVersion = "0.6.25"
+  def scalaJSVersion = "1.14.0"
   object test extends Tests with ScalalibdiffTestModule {
     def millSourcePath = build.millSourcePath / "test"
   }
